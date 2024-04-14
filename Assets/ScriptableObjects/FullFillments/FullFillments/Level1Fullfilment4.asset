@@ -10,15 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68b441072a774d44fba4bab7b9c66436, type: 3}
-  m_Name: Level1Fullfilment3
+  m_Name: Level1Fullfilment4
   m_EditorClassIdentifier: 
   FullfillmentItems:
   - CreatureType: {fileID: 11400000, guid: 86cc10ae5db70b8499cdf0758963e1b2, type: 2}
     Amount: 2
     Order: 0
+    CurrentAmount: 0
   - CreatureType: {fileID: 11400000, guid: 19091639202d2a94683babe61e4c4c17, type: 2}
     Amount: 1
     Order: 0
+    CurrentAmount: 0
   - CreatureType: {fileID: 11400000, guid: 1a70748492c0a9f40a0d32114af798ae, type: 2}
     Amount: 2
     Order: 0
+    CurrentAmount: 0
+  - CreatureType: {fileID: 11400000, guid: 1f5179d5c5f637846a7b0c5be3fdc557, type: 2}
+    Amount: 2
+    Order: 0
+    CurrentAmount: 0
+  - CreatureType: {fileID: 11400000, guid: 1a70748492c0a9f40a0d32114af798ae, type: 2}
+    Amount: 2
+    Order: 0
+    CurrentAmount: 0

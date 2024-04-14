@@ -9,7 +9,6 @@ public class CreatureSpawnerManager : Singleton<CreatureSpawnerManager>
     private Dictionary<CreatureType, int> _creatureInGameCount;
     private Dictionary<CreatureType, int> _creatureSpawnCount;
 
-
     [SerializeField]    
     private GameObject _creaturePrefab;
 
@@ -52,7 +51,7 @@ public class CreatureSpawnerManager : Singleton<CreatureSpawnerManager>
             CheckGameOver();
             return null;
         }
-                
+
         int maxCount = int.MinValue;
         foreach (var creatureType in _creatureSpawnCount.Keys)
         {
@@ -69,13 +68,13 @@ public class CreatureSpawnerManager : Singleton<CreatureSpawnerManager>
 
     private bool IsFullfillmentReached()
     {
-        var fullfillmentValue = _currentFullfillment.GetFullFillmentValue();
+        var fullfillmentValue = _currentFullfillment.GetMaxFullFillment();
         return _wholeHistoryCount >= (fullfillmentValue + _fullfillmentReserve);
     }
 
     private void CheckGameOver()
     {
-        var creatureNeeded = _currentFullfillment.CreatureTypesNeeded;
+        var creatureNeeded = _currentFullfillment.GetNextSacrifices();
 
         foreach (var creatureType in creatureNeeded)
         {
@@ -125,7 +124,7 @@ public class CreatureSpawnerManager : Singleton<CreatureSpawnerManager>
 
         _creatureSpawnCount = new Dictionary<CreatureType, int>();
 
-        foreach (var creatureType in _currentFullfillment.CreatureTypesNeeded)
+        foreach (var creatureType in _currentFullfillment.FullfillmentItems)
         {
             if (!_creatureSpawnCount.ContainsKey(creatureType.CreatureType))
             {
@@ -134,6 +133,11 @@ public class CreatureSpawnerManager : Singleton<CreatureSpawnerManager>
 
             _creatureSpawnCount[creatureType.CreatureType] += creatureType.Amount;
         }
+    }
+
+    public int GetMaxSpawnCount()
+    {
+        return Pentragram.Instance.GetCurrentFullFillmentIndex() + Pentragram.Instance.GetLevelSetting().MaxCreaturesPerSpawn;
     }
 
     public void OnGhostSpawn(EventArgs args)

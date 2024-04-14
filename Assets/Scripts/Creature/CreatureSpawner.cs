@@ -39,7 +39,7 @@ public class CreatureSpawner : MonoBehaviour
 
     private void SpawnCreature()
     {
-        if(_currentNumberOfCreatures >= Pentragram.Instance.GetLevelSetting().MaxCreaturesPerSpawn)
+        if(_currentNumberOfCreatures >= CreatureSpawnerManager.Instance.GetMaxSpawnCount())
         {
             return;
         }

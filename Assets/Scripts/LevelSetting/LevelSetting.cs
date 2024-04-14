@@ -14,7 +14,7 @@ public class LevelSetting : ScriptableObject
         if(fullFillment > FullFillmentBank.FullFillments.Count)
             return creatureTypes;
 
-        foreach (var sacrificeType in FullFillmentBank.FullFillments[fullFillment].CreatureTypesNeeded)
+        foreach (var sacrificeType in FullFillmentBank.FullFillments[fullFillment].FullfillmentItems)
         {
             if (!creatureTypes.Contains(sacrificeType.CreatureType))
                 creatureTypes.Add(sacrificeType.CreatureType);

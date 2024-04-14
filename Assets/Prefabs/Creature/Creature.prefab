@@ -382,7 +382,7 @@ MonoBehaviour:
   _minSpeed: 2
   _minSpeedToControl: 4
   _randomMovementCoolDown: 2
-  _bounceForceDecrease: 0.8
+  _bounceForceSizeInPerc: 0.8
   NudgeMovementStarted:
     m_PersistentCalls:
       m_Calls:

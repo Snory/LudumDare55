@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b441072a774d44fba4bab7b9c66436, type: 3}
   m_Name: Level1Fullfilment2
   m_EditorClassIdentifier: 
-  CreatureTypesNeeded:
+  FullfillmentItems:
   - CreatureType: {fileID: 11400000, guid: 86cc10ae5db70b8499cdf0758963e1b2, type: 2}
-    Amount: 5
+    Amount: 2
+    Order: 0
+    CurrentAmount: -1
   - CreatureType: {fileID: 11400000, guid: 19091639202d2a94683babe61e4c4c17, type: 2}
-    Amount: 5
+    Amount: 2
+    Order: 1
+    CurrentAmount: 3

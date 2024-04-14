@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -49,7 +50,7 @@ public class CreatureNudgeMovement : MonoBehaviour
 
     [Header("Bounce settings")]
     [SerializeField]
-    private float _bounceForceDecrease;
+    private float _bounceForceSizeInPerc;
 
 
     float _maxMagnitude;
@@ -208,6 +209,11 @@ public class CreatureNudgeMovement : MonoBehaviour
     {        
         Vector3 normal = collision.contacts[0].normal;
         Vector3 reflection = Vector3.Reflect(_creatureTransform.forward, normal);
-        _rigidBody.velocity = reflection * _lastVelocity.magnitude * _bounceForceDecrease;
+        _rigidBody.velocity = reflection * _lastVelocity.magnitude * _bounceForceSizeInPerc;
+    }
+
+    internal bool IsNudged()
+    {
+        return _nudgeMovement;
     }
 }

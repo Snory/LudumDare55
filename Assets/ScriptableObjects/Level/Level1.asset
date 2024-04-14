@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Level1
   m_EditorClassIdentifier: 
   FullFillmentBank: {fileID: 11400000, guid: 3a913bcf32168a246a404fdf56b489fb, type: 2}
-  MaxCreaturesPerSpawn: 2
+  MaxCreaturesPerSpawn: 1
