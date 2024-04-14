@@ -352,9 +352,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be79bf90a539db24d9e5396680d8e36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TypeBank: {fileID: 11400000, guid: 8cfc9a3a18acd6c42b215b5cf3f70769, type: 2}
-  _wrongSacrifice: {fileID: 11400000, guid: 2f678e28cf1fea14b81290ed034778df, type: 2}
-  _correctSacrifice: {fileID: 11400000, guid: c84f58b25c28aea4d8fd01f5907caa3a, type: 2}
+  _sacrifice: {fileID: 11400000, guid: d775b630b6590d24daac5913c1cc837f, type: 2}
+  _spawned: {fileID: 11400000, guid: d105b91348a7469468392cd85c710256, type: 2}
+  _died: {fileID: 11400000, guid: 1971225ea2667be41813a1d1dcc76374, type: 2}
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -375,11 +375,12 @@ MonoBehaviour:
   _creatureLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  _minForwardForce: 0
-  _maxForwardForce: 5
-  _maxMagnitudeInPercent: 0.2
+  _minForwardForce: 2
+  _maxForwardForce: 8
+  _maxMagnitudeInPercent: 0.1
   _degradationForce: 0.35
   _minSpeed: 2
+  _minSpeedToControl: 4
   _randomMovementCoolDown: 2
   _bounceForceDecrease: 0.8
   NudgeMovementStarted:

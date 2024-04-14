@@ -3,25 +3,17 @@ using UnityEngine.Events;
 
 public class CreatureHealth : MonoBehaviour
 {
-    public SacrificeTypeBank TypeBank;
-
     [SerializeField]
-    private GeneralEvent _wrongSacrifice;
-
-    [SerializeField]
-    private GeneralEvent _correctSacrifice;
-
-
-    public SacrificeType SacrificeType { get; private set; }
+    private GeneralEvent _sacrifice, _spawned, _died;
+    public CreatureType CreatureType { get; private set; }
     public UnityEvent OnDeath;
 
-    private void Start()
+    public void Init(CreatureType sacrificeType, bool ghostSpawn = false)
     {
-        if(TypeBank == null)
-            Debug.LogError("TypeBank is not set in CreatureHealth");
+        CreatureType = sacrificeType;
+        GetComponent<Renderer>().material.color = CreatureType.Material.color;
 
-        SacrificeType = TypeBank.SacrificeTypes[Random.Range(0, TypeBank.SacrificeTypes.Count)];
-        GetComponent<Renderer>().material.color = SacrificeType.Material.color;
+        _spawned.Raise(new CreatureEventArgs(CreatureType, ghostSpawn));
     }
 
     private void OnDestroy()
@@ -31,28 +23,15 @@ public class CreatureHealth : MonoBehaviour
 
     internal void Die()
     {
+        _died.Raise(new CreatureEventArgs(CreatureType));
         Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Destination")
+        if(other.tag == "ConjecturePoint" || other.tag == "Destination")
         {
-            _wrongSacrifice.Raise();
-            Die();
-        }
-
-        if(other.tag == "ConjecturePoint")
-        {
-            if(other.GetComponent<ConjecturePoint>().SacrificeType != SacrificeType)
-            {
-                _wrongSacrifice.Raise();
-            }
-            else
-            {
-                _correctSacrifice.Raise();
-            }
-
+            _sacrifice.Raise(new SacrificeEventArgs(CreatureType, other.GetComponent<ConjecturePoint>()));
             Die();
         }   
     }

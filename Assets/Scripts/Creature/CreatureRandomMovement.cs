@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-
 public class CreatureRandomMovement : MonoBehaviour
 {
     private NavMeshAgent _agent;
@@ -61,7 +60,6 @@ public class CreatureRandomMovement : MonoBehaviour
 
     public void OnNudgeMovementEnded()
     {
-        Debug.Log("Stopped moving");
         _agent.isStopped = false;
         SetRandomDestination();
     }

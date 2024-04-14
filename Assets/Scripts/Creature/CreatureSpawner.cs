@@ -1,9 +1,6 @@
 using UnityEngine;
 public class CreatureSpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _creatureToSpawn;
-
     [SerializeField] 
     private GameObject _destination;
 
@@ -17,14 +14,17 @@ public class CreatureSpawner : MonoBehaviour
     private float _nextMaxSpawnCooldown = 10;
 
     [SerializeField]
-    private float _maximumNumberOfCreatures = 6;
-
-    [SerializeField]
     private float _currentNumberOfCreatures = 0;
+
+    [SerializeField]   
+    private bool _spawnAtStart = false;
 
     private void Start()
     {
-        _nextSpawnTime = Time.time + Random.Range(0, _nextMaxSpawnCooldown);
+        if(!_spawnAtStart)
+        {
+            _nextSpawnTime = Time.time + Random.Range(0, _nextMaxSpawnCooldown);
+        }
     }
 
     // Update is called once per frame
@@ -39,16 +39,25 @@ public class CreatureSpawner : MonoBehaviour
 
     private void SpawnCreature()
     {
-        if(_currentNumberOfCreatures >= _maximumNumberOfCreatures)
+        if(_currentNumberOfCreatures >= Pentragram.Instance.GetLevelSetting().MaxCreaturesPerSpawn)
         {
             return;
         }
 
-        GameObject creatureObject = Instantiate(_creatureToSpawn, this.transform.position, this.transform.rotation);
-        creatureObject.GetComponentInChildren<CreatureDestinationMovement>().Init(_destination.transform);
+        var creatureType = CreatureSpawnerManager.Instance.GetNextCreatureType();
+        
+        if(creatureType == null)
+        {
+            return;
+        }
         _currentNumberOfCreatures++;
 
+
+        GameObject creatureObject = Instantiate(CreatureSpawnerManager.Instance.GetCreaturePrefab(), this.transform.position, this.transform.rotation);
+        creatureObject.GetComponentInChildren<CreatureDestinationMovement>().Init(CreatureSpawnerManager.Instance.GetDestination().transform);
+
         CreatureHealth creature = creatureObject.GetComponent<CreatureHealth>();
+        creature.Init(creatureType);
         creature.OnDeath.AddListener(OnCreatureDeath);
     }
 

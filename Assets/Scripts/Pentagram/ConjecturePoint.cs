@@ -1,20 +1,8 @@
 using UnityEngine;
 
-public enum ConjecturePointType
-{
-    First = 0,
-    Second = 1,
-    Third = 2,
-    Fourth = 3,
-    Fifth = 4
-}
-
 public class ConjecturePoint : MonoBehaviour
 {
-    public SacrificeType SacrificeType;
-
-    public bool IsOccupied { get; private set; }
-    public bool IsActivated { get; private set; }
+    public CreatureType SacrificeType;
 
     // Start is called before the first frame update
     void Start()
@@ -28,5 +16,13 @@ public class ConjecturePoint : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Init(CreatureType sacrificeType)
+    {
+        SacrificeType = sacrificeType;
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = SacrificeType.Sprite;
+        spriteRenderer.color = SacrificeType.Material.color;
     }
 }

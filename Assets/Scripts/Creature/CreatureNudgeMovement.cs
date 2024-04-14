@@ -39,6 +39,9 @@ public class CreatureNudgeMovement : MonoBehaviour
     [SerializeField]
     private float _minSpeed;
 
+    [SerializeField]
+    private float _minSpeedToControl;
+
     [Header("Random movement settings")]
     [SerializeField]    
     private float _randomMovementCoolDown;
@@ -58,8 +61,7 @@ public class CreatureNudgeMovement : MonoBehaviour
     private bool _isDragging;
     private bool _nudgeMovement;
     private Vector3 _lastVelocity;
-
-    private bool _isBanished;
+    private bool _canBeControled;
 
     private void Awake()
     {
@@ -88,13 +90,13 @@ public class CreatureNudgeMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_isBanished)
-        {
-            return;
-        }
-
         if (Input.GetMouseButtonDown(0))
         {
+            if(!CanBeControlled())
+            {
+                return;
+            }
+
             Ray ray = _main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (!Physics.SphereCast(ray, 1, out hit, Mathf.Infinity, _creatureLayerMask))
@@ -114,6 +116,11 @@ public class CreatureNudgeMovement : MonoBehaviour
         KeepNudgeMovement();
     }
 
+    private bool CanBeControlled()
+    {
+        return _canBeControled || !_nudgeMovement;
+    }
+
     private void KeepNudgeMovement()
     {
         if (!_nudgeMovement)
@@ -122,6 +129,15 @@ public class CreatureNudgeMovement : MonoBehaviour
         }
 
         _rigidBody.velocity = _rigidBody.velocity / (1 + (_degradationForce * Time.deltaTime));
+
+        if(_rigidBody.velocity.magnitude < _minSpeedToControl)
+        {
+            _canBeControled = true;
+        } else
+        {
+            _canBeControled = false;
+        }
+
 
         if (_rigidBody.velocity.magnitude < _minSpeed)
         {
@@ -134,8 +150,6 @@ public class CreatureNudgeMovement : MonoBehaviour
 
         if (Time.time > _randomMovementTime)
         {
-            Debug.Log("Invoked");
-
             _nudgeMovement = false;
             NudgeMovementEnded?.Invoke();
         }
@@ -195,12 +209,5 @@ public class CreatureNudgeMovement : MonoBehaviour
         Vector3 normal = collision.contacts[0].normal;
         Vector3 reflection = Vector3.Reflect(_creatureTransform.forward, normal);
         _rigidBody.velocity = reflection * _lastVelocity.magnitude * _bounceForceDecrease;
-    }
-
-    public void OnBanished()
-    {
-        _isBanished = true;
-
-        _rigidBody.velocity = Vector3.zero;
     }
 }
