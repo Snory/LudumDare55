@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f4ce6cdd44a67498f6ae707be095c1, type: 3}
+  m_Name: Level1FullfillmentBank
+  m_EditorClassIdentifier: 
+  FullFillments:
+  - {fileID: 11400000, guid: 8bf7b1ba46a91e3499af3685432a3346, type: 2}
+  - {fileID: 11400000, guid: 81d3d9fd659031343920a162406bffb0, type: 2}
+  - {fileID: 11400000, guid: 72c5d9b8902540f4db6a4d2b31aa4267, type: 2}
+  - {fileID: 11400000, guid: 3be5642bd4e8fb447809dbca4525705f, type: 2}
+  - {fileID: 11400000, guid: c4a3acb5b1a0dca4abe6574aa5ff4d59, type: 2}

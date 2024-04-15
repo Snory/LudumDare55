@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - SummoningCircle
+  - Creature
+  - ConjecturePoint
+  - Destination
+  - Powerup
   layers:
   - Default
   - TransparentFX
@@ -11,14 +16,14 @@ TagManager:
   - 
   - Water
   - UI
+  - Creature
+  - Walkable
+  - SummoningCircle
+  - Powerup
+  - PostProcessing
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Tutorial
   - 
   - 
   - 
