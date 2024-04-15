@@ -1,17 +1,14 @@
 using UnityEngine;
 public class CreatureSpawner : MonoBehaviour
 {
+    [SerializeField]
+    private BoolVariable _tutorialProgressVariable;
+
     [SerializeField] 
     private GameObject _destination;
 
     [SerializeField]
     private float _nextSpawnTime = 0;
-
-    [SerializeField]
-    private float _nextMinSpawnCooldown = 1;
-
-    [SerializeField]
-    private float _nextMaxSpawnCooldown = 10;
 
     [SerializeField]
     private float _currentNumberOfCreatures = 0;
@@ -23,17 +20,21 @@ public class CreatureSpawner : MonoBehaviour
     {
         if(!_spawnAtStart)
         {
-            _nextSpawnTime = Time.time + Random.Range(0, _nextMaxSpawnCooldown);
+            var (min, max) = CreatureSpawnerManager.Instance.GetSpawnCooldown();
+
+            _nextSpawnTime = Time.time + Random.Range(0, max);
         }
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {        
         if(Time.time > _nextSpawnTime)
         {
             SpawnCreature();
-            _nextSpawnTime = Time.time + Random.Range(_nextMinSpawnCooldown,_nextMaxSpawnCooldown);
+
+            var (min, max) = CreatureSpawnerManager.Instance.GetSpawnCooldown();
+            _nextSpawnTime = Time.time + Random.Range(min, max) + CreatureSpawnerManager.Instance.GetGuaranteedCooldownMinimum();
         }
     }
 

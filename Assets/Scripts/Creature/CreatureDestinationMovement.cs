@@ -21,7 +21,7 @@ public class CreatureDestinationMovement : MonoBehaviour
     {
         _navMeshAgent.isStopped = false;
     }
- 
+
     public void Init(Transform destination)
     {
         _destination = destination;
@@ -46,5 +46,15 @@ public class CreatureDestinationMovement : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void OnStopMovementPlayed()
+    {
+        _navMeshAgent.isStopped = true;
+    }
+
+    public void OnStopMovementended()
+    {
+        _navMeshAgent.isStopped = false;
     }
 }

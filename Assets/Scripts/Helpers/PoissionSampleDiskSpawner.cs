@@ -20,15 +20,22 @@ public class PoissionSampleDiskSpawner : MonoBehaviour
     [SerializeField]
     private float _spawnRadius = 10f, _spawnFromOtherDistance = 5f;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private bool _canSpawn;
+
+    private void Start()
     {
-        
+        _nextSpawnTime = Time.time + Random.Range(_spawnMinCoolDown, _spawnMaxCoolDown);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(!_canSpawn)
+        {
+            return;
+        }
+
         // select random position on navmesh and spawn summoning circle
 
         if (Time.time >= _nextSpawnTime)
@@ -42,6 +49,7 @@ public class PoissionSampleDiskSpawner : MonoBehaviour
             }
 
             Instantiate(_whatToSpawn, randomPosition, Quaternion.identity);
+            StopSpawning();
         }
     }
 
@@ -80,5 +88,16 @@ public class PoissionSampleDiskSpawner : MonoBehaviour
         }
 
         return Vector3.zero;
+    }
+
+    public void StopSpawning()
+    {
+        _canSpawn = false;
+    }
+
+    public void StartSpawning()
+    {
+        _canSpawn = true;
+        _nextSpawnTime = Time.time + Random.Range(_spawnMinCoolDown, _spawnMaxCoolDown);
     }
 }

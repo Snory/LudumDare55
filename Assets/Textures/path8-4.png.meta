@@ -129,106 +129,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: path8-4_0
+      name: Inside
       rect:
         serializedVersion: 2
-        x: 130
-        y: 992
-        width: 214
-        height: 212
+        x: 0
+        y: 256
+        width: 798
+        height: 799
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b368c65d528220e49a3a0f4465d844ba
-      internalID: 1137628969
+      spriteID: 572eeee70d7375f4297c43d5fa68e084
+      internalID: 743397660
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path8-4_7
+      name: Circle
       rect:
         serializedVersion: 2
-        x: 995
-        y: 12
-        width: 825
-        height: 825
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e769480252ff1b42a4eb9b7634bc149
-      internalID: 2087642003
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path8-4_15
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 0
-        width: 921
+        x: 900
+        y: 134
+        width: 914
         height: 927
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63a1ad7b474864048b7306b240502586
-      internalID: 1837966774
+      spriteID: 1577ed61dda51784e8f360341b30034c
+      internalID: 664554183
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path8-4_16
+      name: Conjecutre
       rect:
         serializedVersion: 2
-        x: 431
-        y: 18
-        width: 59
-        height: 24
+        x: 109
+        y: 2
+        width: 219
+        height: 217
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f99ef0bb14d25343be62ca497cb4f0b
-      internalID: 434687997
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path8-4_17
-      rect:
-        serializedVersion: 2
-        x: 487
-        y: 20
-        width: 45
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e8d4f536614ef14ca5e15955448525a
-      internalID: -1871763526
+      spriteID: 4cedeb48645defb4ba0cc091dbda8df8
+      internalID: -1448742896
       vertices: []
       indices: 
       edges: []
@@ -244,25 +202,45 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      path8-4_0: 1137628969
-      path8-4_1: -1793452256
-      path8-4_10: 1828462164
-      path8-4_11: 1205896000
-      path8-4_12: 1759988515
-      path8-4_13: 486564204
-      path8-4_14: -1206591753
-      path8-4_15: 1837966774
-      path8-4_16: 434687997
-      path8-4_17: -1871763526
-      path8-4_18: 1016813602
-      path8-4_2: 1690135088
-      path8-4_3: -857335399
-      path8-4_4: -2103201789
-      path8-4_5: -19871255
-      path8-4_6: -1115290925
-      path8-4_7: 2087642003
-      path8-4_8: -1920828190
-      path8-4_9: 1035946595
+      Circle: 664554183
+      Conjecutre: -1448742896
+      Inside: 743397660
+      path8-4_10: -143407070
+      path8-4_11: 92103083
+      path8-4_12: 2129058979
+      path8-4_13: -1522907580
+      path8-4_14: 408670624
+      path8-4_15: -1821972085
+      path8-4_16: 1804906571
+      path8-4_17: -702134916
+      path8-4_18: 708669019
+      path8-4_19: -1259656321
+      path8-4_20: 306310021
+      path8-4_21: 1878336134
+      path8-4_22: -1249667920
+      path8-4_23: 1712995142
+      path8-4_24: 296978128
+      path8-4_25: -752795374
+      path8-4_26: 43902579
+      path8-4_27: -663724857
+      path8-4_28: -1911008982
+      path8-4_29: 123298490
+      path8-4_3: -1037739492
+      path8-4_30: -1861924947
+      path8-4_31: 21051496
+      path8-4_32: -1645261675
+      path8-4_33: 28983150
+      path8-4_34: 554843790
+      path8-4_35: -1545228784
+      path8-4_36: -126051037
+      path8-4_37: -532767047
+      path8-4_38: 2014772011
+      path8-4_4: 1801494079
+      path8-4_5: -635602542
+      path8-4_6: -279292224
+      path8-4_7: -819862820
+      path8-4_8: 573505452
+      path8-4_9: -736067295
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

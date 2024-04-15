@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CreatureType2
   m_EditorClassIdentifier: 
   Material: {fileID: 2100000, guid: 4933b2d9b2ef1dc47913405242c0b679, type: 2}
-  Sprite: {fileID: 1137628969, guid: c3ad63b24ecce234b861d5dc586ee2d7, type: 3}
+  Sprite: {fileID: -1448742896, guid: c3ad63b24ecce234b861d5dc586ee2d7, type: 3}

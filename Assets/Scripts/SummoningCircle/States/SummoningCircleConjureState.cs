@@ -27,7 +27,6 @@ public class SummoningCircleConjureState : BaseSummoningCircleState
 
         if (_timeToConjureCounter >= _timeToConjure)
         {
-            Debug.Log("Conjure Complete");
             Ended?.Invoke();
             Destroy(this.gameObject);
         }

@@ -6,6 +6,9 @@ using Random = UnityEngine.Random;
 
 public class CreatureSpawnerManager : Singleton<CreatureSpawnerManager>
 {
+    [SerializeField]
+    private float _cooldownIncreasePerLevel = 0.5f;
+
     private Dictionary<CreatureType, int> _creatureInGameCount;
     private Dictionary<CreatureType, int> _creatureSpawnCount;
 
@@ -18,11 +21,18 @@ public class CreatureSpawnerManager : Singleton<CreatureSpawnerManager>
     [SerializeField]
     private int _fullfillmentReserve;
 
+    [SerializeField]
+    private float _nextMinSpawnCooldown = 1;
+
+    [SerializeField]
+    private float _nextMaxSpawnCooldown = 10;
+
     private int _wholeHistoryCount;
     private FullFillment _currentFullfillment;
 
     [SerializeField]
     private GeneralEvent _gameOver;
+
 
     private void Start()
     {
@@ -69,7 +79,7 @@ public class CreatureSpawnerManager : Singleton<CreatureSpawnerManager>
     private bool IsFullfillmentReached()
     {
         var fullfillmentValue = _currentFullfillment.GetMaxFullFillment();
-        return _wholeHistoryCount >= (fullfillmentValue + _fullfillmentReserve);
+        return _wholeHistoryCount >= (fullfillmentValue + GetFullfillmentReserve());
     }
 
     private void CheckGameOver()
@@ -90,6 +100,7 @@ public class CreatureSpawnerManager : Singleton<CreatureSpawnerManager>
     public void OnSpawned(EventArgs args)
     {
         CreatureEventArgs creatureArgs = (CreatureEventArgs)args;
+
         _wholeHistoryCount++;
 
         if (!_creatureInGameCount.ContainsKey(creatureArgs.CreatureType))
@@ -138,6 +149,21 @@ public class CreatureSpawnerManager : Singleton<CreatureSpawnerManager>
     public int GetMaxSpawnCount()
     {
         return Pentragram.Instance.GetCurrentFullFillmentIndex() + Pentragram.Instance.GetLevelSetting().MaxCreaturesPerSpawn;
+    }
+
+    public int GetFullfillmentReserve()
+    {
+        return Pentragram.Instance.GetCurrentFullFillmentIndex() + _fullfillmentReserve;
+    }
+
+    public (float, float) GetSpawnCooldown()
+    {
+        return (_nextMinSpawnCooldown, _nextMaxSpawnCooldown);
+    }
+
+    public float GetGuaranteedCooldownMinimum()
+    {
+        return Pentragram.Instance.GetCurrentFullFillmentIndex() * _cooldownIncreasePerLevel;
     }
 
     public void OnGhostSpawn(EventArgs args)

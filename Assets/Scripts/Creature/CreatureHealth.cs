@@ -8,10 +8,26 @@ public class CreatureHealth : MonoBehaviour
     public CreatureType CreatureType { get; private set; }
     public UnityEvent OnDeath;
 
+    [SerializeField]
+    private MeshRenderer _bodyRenderer;
+
+    [SerializeField]
+    private Material _defaultMaterial;
+
+    [SerializeField]
+    private BoolVariable _ignoreOrderPlayed;
+
     public void Init(CreatureType sacrificeType, bool ghostSpawn = false)
     {
         CreatureType = sacrificeType;
-        GetComponent<Renderer>().material.color = CreatureType.Material.color;
+
+        if (!_ignoreOrderPlayed.Value)
+        {
+            _bodyRenderer.material.color = CreatureType.Material.color;
+        } else
+        {
+            OnIgnoreOrderPowerupPlayer();
+        }
 
         _spawned.Raise(new CreatureEventArgs(CreatureType, ghostSpawn));
     }
@@ -35,4 +51,15 @@ public class CreatureHealth : MonoBehaviour
             Die();
         }   
     }
+
+    public void OnIgnoreOrderPowerupPlayer()
+    {
+        _bodyRenderer.material.color = _defaultMaterial.color;
+    }
+
+    public void OnIgnoreOrderPowerupEnded()
+    {
+        _bodyRenderer.material.color = CreatureType.Material.color;
+    }
+
 }

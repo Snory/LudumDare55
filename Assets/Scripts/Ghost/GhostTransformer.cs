@@ -10,6 +10,7 @@ public class GhostTransformer : MonoBehaviour
    
     private float _nextPossibleTransformTime = 0;
 
+
     private void Awake()
     {
         _nextPossibleTransformTime = Time.time + _transformProtectionCooldown;

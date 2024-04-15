@@ -8,6 +8,7 @@ TagManager:
   - Creature
   - ConjecturePoint
   - Destination
+  - Powerup
   layers:
   - Default
   - TransparentFX
@@ -18,11 +19,11 @@ TagManager:
   - Creature
   - Walkable
   - SummoningCircle
+  - Powerup
+  - PostProcessing
   - 
   - 
-  - 
-  - 
-  - 
+  - Tutorial
   - 
   - 
   - 

@@ -3,26 +3,40 @@ using UnityEngine;
 public class ConjecturePoint : MonoBehaviour
 {
     public CreatureType SacrificeType;
+    private SpriteRenderer _spriteRenderer;
+    private Material _defaultMaterial;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private BoolVariable _ignoreOrderPlayed;
+
+    private void Awake()
     {
-        var spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = SacrificeType.Sprite;
-        spriteRenderer.color = SacrificeType.Material.color;
+        _spriteRenderer = GetComponent<SpriteRenderer>();        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void Init(CreatureType sacrificeType)
+    public void Init(CreatureType sacrificeType, Material defaultMaterial)
     {
         SacrificeType = sacrificeType;
-        var spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = SacrificeType.Sprite;
-        spriteRenderer.color = SacrificeType.Material.color;
+        _spriteRenderer.sprite = SacrificeType.Sprite;
+        _defaultMaterial = defaultMaterial;
+
+        if (!_ignoreOrderPlayed.Value)
+        {
+            _spriteRenderer.color = SacrificeType.Material.color;
+        } else
+        {
+            _spriteRenderer.color = _defaultMaterial.color;
+        }
     }
+
+    public void SetDefaultColor()
+    {
+        _spriteRenderer.color = _defaultMaterial.color;
+    }
+
+    public void ResetColor()
+    {
+        _spriteRenderer.color = SacrificeType.Material.color;
+    }
+
 }

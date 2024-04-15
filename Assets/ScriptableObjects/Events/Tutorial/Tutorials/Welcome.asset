@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7bed52018f24fe4ea928e1ea1b3575b, type: 3}
+  m_Name: Welcome
+  m_EditorClassIdentifier: 
+  TutorialStartEvent: {fileID: 11400000, guid: 5ced8af4a4c15bf4a877ae3c5e42037c, type: 2}
+  TutorialEndEvent: {fileID: 11400000, guid: 02302bf6d3d25484f9aa1270e64a83b1, type: 2}
+  PauseTime: 1
+  TutorialTexts:
+  - "Align the acolyte\u2019s color with that of the conjuring point in correct ORDER.
+    Only way to get the correct order is by trial and error. Summoning circle will
+    indicate if the sacrifice was correct. "
+  - For each level there is X number of acolyte of given color going to be spawned.
+    Once there is no way you can win (all expected acolytes are dead), you lose.
+  - A mere drag of your finger shall guide the acolyte. Should you neglect him, he
+    will wander off and his faith is sealed.
+  - If the acolyte wander toward the middle or toward wrong conjuring point a lost
+    soul shall emerge instead.
+  - "Yet, fear not! For should the acolyte and lost soul cross paths, the lost soul
+    shall miraculously mirror the acolyte\u2019s very color."
+  - The "1" and "2" keys hold within them mystical power-ups if charged up. Acolyte
+    can collect them. Only one can be collected for each type at the same time.
+  - "If by some misfortune the game is not centered or you can\u2019t see anything,
+    use WSAD or mouse scroll to adjust it."
+  - You can read the tutorial again by pressing "T"

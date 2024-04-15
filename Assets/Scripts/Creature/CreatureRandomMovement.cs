@@ -25,6 +25,9 @@ public class CreatureRandomMovement : MonoBehaviour
     [SerializeField]
     private UnityEvent TriesExceeded;
 
+    [SerializeField]
+    private bool _canMove;
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();  
@@ -34,20 +37,26 @@ public class CreatureRandomMovement : MonoBehaviour
         }
 
         _agent.isStopped = true;
+        _canMove = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(_agent.isStopped)
+        if (_agent.isStopped)
         {
             return;
         }
 
-        if(!_agent.hasPath || _agent.remainingDistance < 0.5f)
+        if (!_canMove)
         {
-            if(Time.time > _nextDestinationTime)
-            {               
+            return;
+        }
+
+        if (!_agent.hasPath || _agent.remainingDistance < 0.5f)
+        {
+            if (Time.time > _nextDestinationTime)
+            {
                 SetRandomDestination();
             }
         }
@@ -88,5 +97,17 @@ public class CreatureRandomMovement : MonoBehaviour
         }
         _nextDestinationTime = Time.time + Random.Range(_nextDestinationMinCooldown, _nextDestinationMaxCooldown);
         _agent.SetDestination(finalPosition);   
+    }
+
+    public void OnStopMovementPlayed()
+    {
+        _canMove = false;
+        _agent.isStopped = true;
+    }
+
+    public void OnStopMovementEnded()
+    {
+        _canMove = true;
+        _agent.isStopped = false;
     }
 }

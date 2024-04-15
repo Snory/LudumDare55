@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SacrificeType: {fileID: 11400000, guid: 86cc10ae5db70b8499cdf0758963e1b2, type: 2}
+  _ignoreOrderPlayed: {fileID: 11400000, guid: 31e5d13f48fa663489345ac396b31e93, type: 2}
 --- !u!135 &6086836270076289884
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -101,12 +102,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1137628969, guid: c3ad63b24ecce234b861d5dc586ee2d7, type: 3}
+  m_Sprite: {fileID: -1448742896, guid: c3ad63b24ecce234b861d5dc586ee2d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.14, y: 2.12}
+  m_Size: {x: 2.19, y: 2.17}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

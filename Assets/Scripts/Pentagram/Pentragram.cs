@@ -28,7 +28,14 @@ public class Pentragram : Singleton<Pentragram>
     private List<FullFillmentItem> _currentFullFillments;
     private FullFillment _currentFullfillment;
 
+    [SerializeField]
+    private Material _defaultMaterial;
+
+    private bool _ignoreOrderPowerup;
+
     private int _currentFullfillmentIndex = -1;
+        
+
     private void Start()
     {
         NextFullfillment();
@@ -77,17 +84,15 @@ public class Pentragram : Singleton<Pentragram>
 
         if (
             (nextSacrifice.CreatureType == sacrificeEventArgs.CreatureType
-            && nextSacrifice.CreatureType == sacrificeEventArgs.ConjecturePoint.SacrificeType)
-            )
+            && nextSacrifice.CreatureType == sacrificeEventArgs.ConjecturePoint.SacrificeType
+            ) || _ignoreOrderPowerup
+        )
         {
-
-            Debug.Log("Correct Sacrifice");
             UpdateFullfillment(1);
             _correctSacrifice.Raise();
         }
         else
         {
-            Debug.Log("Bad Sacrifice");
             UpdateFullfillment(-1);
             _wrongSacrifice.Raise();
         }
@@ -145,7 +150,7 @@ public class Pentragram : Singleton<Pentragram>
             newConjecturePointGameObject.transform.position = spawnPosition;
 
             _conjecuturePoints.Add(newConjecturePointGameObject.GetComponent<ConjecturePoint>());
-            _conjecuturePoints[i].Init(countOfConjecturePoints[i]);
+            _conjecuturePoints[i].Init(countOfConjecturePoints[i], _defaultMaterial);
         }
     }
 
@@ -188,6 +193,25 @@ public class Pentragram : Singleton<Pentragram>
         DestroyConjecturePoints();
         GeneratePentagram();
         _newFullFillment.Raise(new FullFillmentEventArgs(_currentFullfillment));
+    }
+
+    public void OnIgnoreOrderPlayed()
+    {
+        foreach (var conjecturePoint in _conjecuturePoints)
+        {
+            conjecturePoint.SetDefaultColor();
+        }
+
+        _ignoreOrderPowerup = true;
+    }
+
+    public void OnIgnoreOrderEnded()
+    {
+        foreach (var conjecturePoint in _conjecuturePoints)
+        {
+            conjecturePoint.ResetColor();
+        }
+        _ignoreOrderPowerup = false;
     }
 
     private void OnDrawGizmos()
